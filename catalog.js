@@ -29,6 +29,13 @@ const games = [
     orientation: "landscape",
   },
   {
+    id: "sunny-glossvexa",
+    title: "阳光清洗",
+    category: "休闲",
+    description: "用水枪冲掉旋转玩具上的污渍，积攒能量开启超级水枪。",
+    orientation: "portrait",
+  },
+  {
     id: "star-dash",
     title: "星轨疾行",
     category: "街机",

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#71cbea">
+  <title>阳光清洗</title>
+  <link rel="stylesheet" href="./game.css">
+  <script type="module" src="./game.js"></script>
+</head>
+<body>
+  <main id="workshop" data-screen="loading">
+    <canvas id="wash-bay" aria-label="清洗工坊"></canvas>
+    <section id="loading" aria-label="载入游戏">
+      <img src="./assets/art/title-zh-CN.webp" alt="阳光清洗">
+      <p id="loading-status" role="status">正在加载工坊…</p>
+      <button id="retry" type="button" hidden>重试</button>
+    </section>
+    <header id="hud" hidden>
+      <div class="top-row">
+        <div class="counter wallet"><span class="sr">金币</span><strong id="coins">0</strong></div>
+        <div class="counter best"><span class="sr">最高纪录</span><strong id="best">0</strong></div>
+        <div id="home-tools">
+          <button id="sound" class="icon" type="button" aria-label="音效" aria-pressed="true">
+            <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 11h5l6-5v16l-6-5H4z"/><path class="waves" d="M19 10a5 5 0 0 1 0 8m3-11a9 9 0 0 1 0 14"/><path class="mute" d="m19 11 6 6m0-6-6 6"/></svg>
+          </button>
+          <button id="help" class="icon" type="button" aria-label="玩法说明">?</button>
+        </div>
+        <button id="pause" class="icon" type="button" aria-label="暂停" hidden>Ⅱ</button>
+      </div>
+      <div id="wash-info" hidden>
+        <div id="clean-meter" class="clean-meter" role="progressbar" aria-label="清洗进度" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+        <div class="swatch"><span id="item-name">橡皮鸭</span><strong id="percent">0%</strong></div>
+      </div>
+    </header>
+    <section id="home" hidden>
+      <h1><img src="./assets/art/title-zh-CN.webp" alt="阳光清洗"></h1>
+      <button id="play" class="primary" type="button">开始清洗</button>
+    </section>
+    <div id="energy" class="energy" role="meter" aria-valuemin="0" aria-valuemax="100" aria-label="超级水枪能量" hidden><span></span></div>
+    <p id="hint" class="swatch" hidden>按住拖动，冲洗玩具</p>
+    <div id="reward" aria-live="polite" hidden><img src="./assets/art/perfect.webp" alt="清洗完成"><span id="payout"></span></div>
+    <dialog id="help-panel">
+      <form method="dialog">
+        <h2>玩法说明</h2>
+        <ul>
+          <li><img loading="lazy" src="./assets/art/sprayer.webp" alt="">按住并拖动，用水枪冲走污渍。</li>
+          <li><img loading="lazy" src="./assets/art/check.webp" alt="">等玩具旋转，冲洗每一面。</li>
+          <li><img loading="lazy" src="./assets/art/coin.webp" alt="">清洗大型玩具和金色污渍可获得更多金币。</li>
+          <li><img loading="lazy" src="./assets/art/power.webp" alt="">每洗完三件，开启 25 秒超级水枪。</li>
+        </ul>
+        <button class="primary">返回</button>
+      </form>
+    </dialog>
+    <dialog id="pause-panel">
+      <h2>已暂停</h2>
+      <div class="actions">
+        <button id="resume" class="primary" type="button">继续清洗</button>
+        <button id="restart" type="button">重新开始</button>
+        <button id="back" type="button">返回首页</button>
+      </div>
+    </dialog>
+  </main>
+</body>
+</html>
