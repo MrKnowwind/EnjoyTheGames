@@ -10,17 +10,28 @@ const titleArt = language === "en" ? "./art/title.webp" : "./art/title-zh-CN.web
 byId("loading-title").src = titleArt;
 
 try {
-  const canvas = byId("board");
-  const [response, sky] = await Promise.all([fetch(`./locales/${language}.json`), SkyView.create(canvas)]);
-  if (!response.ok) throw new Error(`Locale request returned ${response.status}`);
-  const view = sky ?? new BoardView(canvas);
-  initialize(await response.json(), view, Boolean(sky));
+  const sky = SkyView.create(byId("board-webgl"), AbortSignal.timeout(20_000)).catch((error) => {
+    console.warn("3D rendering unavailable", error);
+    return null;
+  });
+  const locale = fetch(`./locales/${language}.json`, { signal: AbortSignal.timeout(8000) }).then((response) => {
+    if (!response.ok) throw new Error(`Locale request returned ${response.status}`);
+    return response.json();
+  });
+  const [strings, readySky] = await Promise.all([
+    locale,
+    Promise.race([sky, new Promise((resolve) => setTimeout(() => resolve(null), 800))]),
+  ]);
+  const showSky = initialize(strings, readySky);
+  if (!readySky) void sky.then((view) => { if (view) showSky(view); });
 } catch (error) {
-  status.textContent = "无法载入游戏，请刷新后重试。";
+  status.textContent = "无法载入游戏。";
+  byId("loading-meter").hidden = true;
+  byId("load-retry").hidden = false;
   console.error(error);
 }
 
-function initialize(strings, view, isWebGL) {
+function initialize(strings, readySky) {
   document.documentElement.lang = language;
   document.title = strings.title;
   const number = new Intl.NumberFormat(language);
@@ -43,6 +54,8 @@ function initialize(strings, view, isWebGL) {
   const hud = byId("hud");
   const footer = byId("game-footer");
   const canvas = byId("board");
+  let view = readySky ?? new BoardView(canvas);
+  let isWebGL = Boolean(readySky);
   const hudSafe = byId("hud-safe");
   const layout = byId("hud-layout");
   const dial = byId("tilt-dial");
@@ -150,14 +163,23 @@ function initialize(strings, view, isWebGL) {
 
   if (!isWebGL) {
     view.texture.addEventListener("load", draw);
-    view.texture.src = "./art/deck_color.png";
+    view.texture.src = "./art/deck_color.webp";
   }
+  byId("board-webgl").hidden = !isWebGL;
   game.dataset.renderer = isWebGL ? "webgl2" : "canvas";
   byId("loading").hidden = true;
   game.hidden = false;
   new ResizeObserver(resize).observe(hudSafe);
   resize();
   show("home");
+
+  return (sky) => {
+    view = sky;
+    isWebGL = true;
+    byId("board-webgl").hidden = false;
+    game.dataset.renderer = "webgl2";
+    resize();
+  };
 
   function resize() {
     const width = hudSafe.clientWidth;

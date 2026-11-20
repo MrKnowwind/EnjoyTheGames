@@ -25,21 +25,29 @@ const programNames = ["scene", "sky", "fx"];
 const textures = { uBase: "deck_color", uNormal: "deck_normal", uOrm: "deck_orm", uHeight: "deck_height" };
 
 export class SkyView {
-  static async create(canvas) {
+  static async create(canvas, signal) {
     const gl = canvas.getContext("webgl2", { alpha: false });
     if (!gl) return null;
     const [sources, materials] = await Promise.all([
       Promise.all(programNames.map(async (name) => Promise.all(["vert", "frag"].map(async (stage) => {
         const path = `./shaders/${name}.${stage}`;
-        const response = await fetch(path);
+        const response = await fetch(path, { signal });
         if (!response.ok) throw new Error(`${path}: ${response.status}`);
         return response.text();
       })))),
       Promise.all(Object.values(textures).map(async (name) => {
+        const path = `./art/${name}.webp`;
+        const response = await fetch(path, { signal });
+        if (!response.ok) throw new Error(`${path}: ${response.status}`);
+        const url = URL.createObjectURL(await response.blob());
         const image = new Image();
-        image.src = `./art/${name}.png`;
-        await image.decode();
-        return image;
+        try {
+          image.src = url;
+          await image.decode();
+          return image;
+        } finally {
+          URL.revokeObjectURL(url);
+        }
       })),
     ]);
     return new SkyView(canvas, gl, sources, materials);

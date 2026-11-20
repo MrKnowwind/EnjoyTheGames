@@ -11,10 +11,12 @@
 <body>
   <div id="loading" class="loading">
     <img id="loading-title" src="./art/title-zh-CN.webp" alt="">
-    <div class="loading-meter" aria-hidden="true"></div>
+    <div id="loading-meter" class="loading-meter" aria-hidden="true"></div>
     <p id="load-status" role="status">正在载入游戏…</p>
+    <a id="load-retry" href="" hidden>重试</a>
   </div>
   <main id="game" class="game" data-screen="home" hidden>
+    <canvas id="board-webgl" aria-hidden="true" hidden></canvas>
     <canvas id="board" tabindex="-1" aria-describedby="steer-hint"></canvas>
     <div class="hud-safe" id="hud-safe">
     <div id="hud-layout" class="hud-layout">
