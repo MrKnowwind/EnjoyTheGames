@@ -56,7 +56,6 @@ function initialize(strings, view, isWebGL) {
   const chargeTrack = byId("charge-track");
   const feedback = byId("feedback");
   const feedbackArt = byId("feedback-art");
-  const feedbackCaption = byId("feedback-caption");
   const smallScore = byId("small-score");
   const magnetTimer = byId("magnet-timer");
   const helpPages = [...document.querySelectorAll(".help-page")];
@@ -299,14 +298,8 @@ function initialize(strings, view, isWebGL) {
     feedbackStart = round.elapsed;
     feedbackUntil = round.elapsed + duration;
     const keys = { boost: "boost", goal: "goalBanner", perfect: "perfectBanner", combo: "comboBanner", time_up: "timeBanner" };
-    feedbackArt.hidden = language !== "en";
-    feedbackCaption.hidden = language === "en";
-    if (language === "en") {
-      feedbackArt.src = `./art/${icon}.webp`;
-      feedbackArt.alt = t(keys[icon]);
-    } else {
-      feedbackCaption.textContent = t(keys[icon]);
-    }
+    feedbackArt.src = `./art/${icon}.webp`;
+    feedbackArt.alt = t(keys[icon]);
     setText("feedback-reward", reward);
     feedback.hidden = false;
   }

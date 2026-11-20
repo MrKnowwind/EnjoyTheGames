@@ -19,7 +19,7 @@ python -m http.server 8000 --bind 127.0.0.1
 
 已发布的 H5 游戏可在目录配置里添加 `url`，大厅会嵌入原站，同时提供在新标签打开的入口。
 
-「云端弹珠」移植自 Hyper Tiltvexa。WebGL 2 版使用原版着色器、贴图、几何参数和界面素材，支持鼠标或触屏拖拽以及键盘方向键。无 WebGL 2 的浏览器会显示简化画面。独立入口 `games/hyper-tiltvexa/` 默认使用简体中文，添加 `?lang=en` 可查看原版英文标题和反馈素材。
+「云端弹珠」移植自 Hyper Tiltvexa。WebGL 2 版使用原版着色器、贴图、几何参数和界面素材，支持鼠标或触屏拖拽以及键盘方向键。无 WebGL 2 的浏览器会显示简化画面。独立入口 `games/hyper-tiltvexa/` 默认使用简体中文，添加 `?lang=en` 可查看英文界面和原标题。两种语言均使用原版英文反馈图片。
 
 ```sh
 node scripts/check-locales.mjs games/hyper-tiltvexa/locales
