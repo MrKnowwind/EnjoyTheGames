@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2c7dba">
+  <title>云端弹珠</title>
+  <link rel="stylesheet" href="./game.css">
+  <script type="module" src="./game.mjs"></script>
+</head>
+<body>
+  <div id="loading" class="loading">
+    <img id="loading-title" src="./art/title-zh-CN.webp" alt="">
+    <div class="loading-meter" aria-hidden="true"></div>
+    <p id="load-status" role="status">正在载入游戏…</p>
+  </div>
+  <main id="game" class="game" data-screen="home" hidden>
+    <canvas id="board" tabindex="-1" aria-describedby="steer-hint"></canvas>
+    <div class="hud-safe" id="hud-safe">
+    <div id="hud-layout" class="hud-layout">
+    <header id="hud" class="hud" hidden>
+      <dl class="hud-stats">
+        <div class="coins-frame"><img src="./art/coins_frame.webp" alt=""><dt class="sr-only" data-text="coins"></dt><dd id="coins"></dd></div>
+        <div class="time-frame"><img src="./art/time_frame.webp" alt=""><dt class="sr-only" data-text="remaining"></dt><dd id="timer"></dd></div>
+        <div class="combo-frame"><img src="./art/combo_frame.webp" alt=""><dt class="sr-only" data-text="combo"></dt><dd id="combo"></dd></div>
+      </dl>
+      <button id="pause" class="round-control" type="button" data-icon="pause" data-label="pause"></button>
+      <div class="charge">
+        <label class="pill" id="charge-label" for="charge" data-text="gravity"></label>
+        <progress id="charge" class="sr-only" max="1" value="0"></progress>
+        <div class="charge-track" id="charge-track" aria-hidden="true"><span></span></div>
+        <img class="charge-frame" src="./art/meter_frame.webp" alt="">
+      </div>
+      <p id="magnet-timer" class="pill" hidden><img src="./art/slot_magnet.webp" alt=""><span id="magnet-time"></span></p>
+    </header>
+
+    <footer id="game-footer" class="game-footer" hidden>
+      <p id="steer-hint" class="pill" data-text="dragHint" data-label="controls"></p>
+      <div id="feedback" class="feedback" aria-live="polite" hidden>
+        <img id="feedback-art" alt="" hidden>
+        <strong id="feedback-caption"></strong>
+        <p id="feedback-reward"></p>
+      </div>
+      <p id="small-score" aria-live="polite" hidden></p>
+      <p class="score pill"><span data-text="score"></span><strong id="score"></strong></p>
+      <div class="tools">
+        <button id="buy-time" class="shop-control" type="button" disabled>
+          <img class="tool-icon" src="./art/extra_time.webp" alt=""><span class="price"><img src="./art/coin.webp" alt=""><span id="time-price"></span></span>
+        </button>
+        <button id="buy-magnet" class="shop-control" type="button" disabled>
+          <img class="tool-icon" src="./art/slot_magnet.webp" alt=""><span class="price"><img src="./art/coin.webp" alt=""><span id="magnet-price"></span></span>
+        </button>
+      </div>
+      <div id="tilt-dial" class="tilt-dial" aria-hidden="true" hidden><i></i><b></b></div>
+    </footer>
+
+    <section id="home" class="home" aria-labelledby="game-title">
+      <h1 id="game-title" class="game-title"><img id="title-art" src="./art/title-zh-CN.webp" alt="云端弹珠"></h1>
+      <p class="best-score pill"><img src="./art/combo_icon.webp" alt=""><span data-text="bestLabel"></span><strong id="best-score"></strong></p>
+      <button id="start" class="round-control primary" type="button" data-icon="play" data-label="start"></button>
+      <button id="help-button" class="round-control" type="button" data-icon="help" data-label="help"></button>
+    </section>
+
+    <section id="help" class="overlay" aria-labelledby="help-title" hidden>
+      <div class="panel help-panel">
+        <h2 id="help-title" data-text="help"></h2>
+        <button id="close-help" class="round-control" type="button" data-icon="close" data-label="back"></button>
+        <div class="help-page">
+          <div class="rule pill"><span class="help-dial" aria-hidden="true"></span><div><strong data-text="tiltDisc"></strong><p data-text="controls"></p></div></div>
+          <div class="rule pill"><img src="./art/coin.webp" alt=""><div><strong data-text="aimSlots"></strong><p id="rule-slots"></p></div></div>
+          <div class="rule pill"><img src="./art/combo_icon.webp" alt=""><div><strong data-text="chainGoals"></strong><p data-text="ruleCombo"></p></div></div>
+        </div>
+        <div class="help-page" hidden>
+          <div class="rule pill"><img src="./art/lucky.webp" alt=""><div><strong data-text="goldLucky"></strong><p data-text="ruleMarbles"></p></div></div>
+          <div class="rule pill"><img src="./art/time_bonus.webp" alt=""><div><strong data-text="timeMarble"></strong><p id="rule-time"></p></div></div>
+          <div class="rule pill"><img src="./art/boost_icon.webp" alt=""><div><strong data-text="goldenGravity"></strong><p data-text="ruleGolden"></p></div></div>
+        </div>
+        <div class="help-page" hidden>
+          <div class="rule pill"><img src="./art/extra_time.webp" alt=""><div><strong data-text="extraTime"></strong><p id="time-cost"></p></div></div>
+          <div class="rule pill"><img src="./art/slot_magnet.webp" alt=""><div><strong data-text="magnet"></strong><p id="magnet-cost"></p><p data-text="ruleMagnet"></p></div></div>
+        </div>
+        <nav class="help-navigation" data-label="help">
+          <button id="help-prev" class="round-control" type="button" data-icon="prev" data-label="previous"></button>
+          <div class="help-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <button id="help-next" class="round-control" type="button" data-icon="next" data-label="next"></button>
+        </nav>
+      </div>
+    </section>
+
+    <section id="paused" class="overlay" aria-labelledby="pause-title" hidden>
+      <div class="panel">
+        <h2 id="pause-title" data-text="paused"></h2>
+        <p class="pause-time pill"><img src="./art/time.webp" alt=""><strong id="pause-time"></strong></p>
+        <div class="panel-actions">
+          <button id="pause-home" class="round-control" type="button" data-icon="home" data-label="home"></button>
+          <button id="resume" class="round-control primary" type="button" data-icon="play" data-label="resume"></button>
+          <button id="restart" class="round-control" type="button" data-icon="restart" data-label="restart"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="overlay" aria-labelledby="result-title" hidden>
+      <div class="panel">
+        <h2 id="result-title" tabindex="-1"></h2>
+        <p class="result-score" id="result-score"></p>
+        <p id="result-best"></p>
+        <dl class="result-stats">
+          <div class="pill"><span id="result-goal-ring" class="result-goal-ring" aria-hidden="true"></span><img id="result-goal-icon" alt="" hidden><dt data-text="goals"></dt><dd id="result-goals"></dd></div>
+          <div class="pill"><img src="./art/coin.webp" alt=""><dt data-text="coinsEarned"></dt><dd id="result-coins"></dd></div>
+          <div class="pill"><img src="./art/combo_icon.webp" alt=""><dt data-text="bestCombo"></dt><dd id="result-combo"></dd></div>
+          <div class="pill"><img src="./art/boost_icon.webp" alt=""><dt data-text="boosts"></dt><dd id="result-boosts"></dd></div>
+        </dl>
+        <div class="panel-actions">
+          <button id="result-home" class="round-control" type="button" data-icon="home" data-label="home"></button>
+          <button id="replay" class="round-control" type="button" data-icon="restart" data-label="replay"></button>
+        </div>
+      </div>
+    </section>
+    </div>
+    </div>
+  </main>
+</body>
+</html>

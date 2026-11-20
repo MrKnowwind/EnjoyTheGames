@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f9">
+  <meta name="description" content="EnjoyTheGames 是一个浏览器小游戏合集。选一款游戏，点击即玩。">
+  <title>EnjoyTheGames · 小游戏大厅</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./catalog.js"></script>
+  <script defer src="./lobby.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./" aria-label="EnjoyTheGames 首页">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Enjoy<span class="brand-accent">The</span>Games<span class="brand-accent">.</span></span>
+      </a>
+      <nav aria-label="主导航">
+        <a class="library-link" href="#library"><span class="grid-icon" aria-hidden="true"></span>游戏库</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell lobby">
+    <section class="hero" data-featured aria-labelledby="featured-title" hidden>
+      <img class="hero-art" data-featured-cover alt="" fetchpriority="high">
+      <div class="hero-copy">
+        <p class="featured-label"><span aria-hidden="true"></span>精选试玩</p>
+        <h1 id="featured-title"></h1>
+        <p class="hero-description" data-featured-description></p>
+        <a class="play-button" data-featured-link><span class="play-icon" aria-hidden="true"></span>立即开玩</a>
+      </div>
+    </section>
+
+    <section class="library" id="library" aria-labelledby="library-title">
+      <div class="library-heading">
+        <div>
+          <h2 id="library-title">游戏库</h2>
+        </div>
+        <div class="filters" data-filters role="group" aria-label="按游戏分类筛选"></div>
+      </div>
+      <p class="sr-only" data-result-count role="status"></p>
+      <p class="empty-library" data-empty-library hidden>游戏库正在准备中。</p>
+      <ul class="game-list" data-game-list></ul>
+      <noscript><p>请启用 JavaScript 来浏览和游玩小游戏。</p></noscript>
+    </section>
+  </main>
+
+  <footer class="shell site-footer">
+    <strong>EnjoyTheGames</strong>
+    <span>浏览器小游戏合集</span>
+  </footer>
+
+  <template id="game-card">
+    <li>
+      <a class="game-card">
+        <div class="card-art"><img alt="" width="640" height="360" decoding="async" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-copy">
+            <p class="card-category"></p>
+            <h3></h3>
+            <p class="card-description"></p>
+          </div>
+          <span class="card-play" aria-hidden="true"><span class="play-icon"></span></span>
+        </div>
+      </a>
+    </li>
+  </template>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f9">
+  <title>游玩 · EnjoyTheGames</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./catalog.js"></script>
+  <script defer src="./player.js"></script>
+</head>
+<body class="play-page">
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./" aria-label="EnjoyTheGames 首页">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Enjoy<span class="brand-accent">The</span>Games<span class="brand-accent">.</span></span>
+      </a>
+      <a class="library-link" href="./#library"><span class="grid-icon" aria-hidden="true"></span>返回游戏库</a>
+    </div>
+  </header>
+
+  <main class="shell player">
+    <div class="player-heading">
+      <h1 data-game-title>游玩</h1>
+      <div class="player-actions">
+        <a class="fullscreen-button" data-external target="_blank" rel="noopener" hidden>新标签打开</a>
+        <button class="fullscreen-button" type="button" data-fullscreen hidden>全屏</button>
+      </div>
+    </div>
+    <p class="player-message" data-player-message role="status"></p>
+    <div class="player-stage" data-stage hidden></div>
+    <noscript><p>请启用 JavaScript 来打开游戏。</p></noscript>
+  </main>
+</body>
+</html>

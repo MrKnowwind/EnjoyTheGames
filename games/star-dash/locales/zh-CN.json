@@ -1,0 +1,10 @@
+{
+  "title": "星轨疾行",
+  "instruction": "用下方按钮或键盘左右键切换轨道，躲避陨石。",
+  "start": "开始游戏",
+  "retry": "再玩一次",
+  "left": "向左",
+  "right": "向右",
+  "flightTime": "飞行时间 {seconds} 秒",
+  "result": "飞船撞上了陨石，本局飞行 {seconds} 秒。"
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Star Dash",
+  "instruction": "Switch lanes to dodge asteroids. Tap the buttons below or use the left and right arrow keys.",
+  "start": "Start game",
+  "retry": "Play again",
+  "left": "Move left",
+  "right": "Move right",
+  "flightTime": "Flight time: {seconds} s",
+  "result": "You hit an asteroid after {seconds} s."
+}
