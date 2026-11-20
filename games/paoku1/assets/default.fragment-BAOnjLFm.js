@@ -1,0 +1,1 @@
+export{V as defaultPixelShaderWGSL}from"./engine-BCBGsvDm.js";

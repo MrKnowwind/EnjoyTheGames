@@ -1,0 +1,1 @@
+export{ot as colorPixelShader}from"./engine-BCBGsvDm.js";

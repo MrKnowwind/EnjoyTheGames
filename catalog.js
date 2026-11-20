@@ -13,7 +13,6 @@ const games = [
     category: "益智",
     description: "引导方块锁定落点，及时躲避并填满整行。",
     orientation: "portrait",
-    url: "https://mrknowwind.github.io/elsblock/",
   },
   {
     id: "roadduck",
@@ -21,7 +20,6 @@ const games = [
     category: "街机",
     description: "带小鸭子躲开车流，安全穿过马路。",
     orientation: "portrait",
-    url: "https://mrknowwind.github.io/roadduck/",
   },
   {
     id: "paoku1",
@@ -29,7 +27,6 @@ const games = [
     category: "动作",
     description: "在森林中跳跃、滑铲，收集沿途的金币。",
     orientation: "landscape",
-    url: "https://mrknowwind.github.io/paoku1/",
   },
   {
     id: "star-dash",

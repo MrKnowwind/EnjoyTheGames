@@ -4,7 +4,6 @@ const title = document.querySelector("[data-game-title]");
 const stage = document.querySelector("[data-stage]");
 const message = document.querySelector("[data-player-message]");
 const fullscreen = document.querySelector("[data-fullscreen]");
-const external = document.querySelector("[data-external]");
 
 if (game) {
   document.title = `${game.title} · EnjoyTheGames`;
@@ -15,11 +14,7 @@ if (game) {
   frame.className = "game-frame";
   frame.title = game.title;
   frame.allowFullscreen = true;
-  frame.src = game.url ?? `./games/${encodeURIComponent(game.id)}/index.html`;
-  if (game.url) {
-    external.href = game.url;
-    external.hidden = false;
-  }
+  frame.src = `./games/${encodeURIComponent(game.id)}/index.html`;
   frame.addEventListener("load", () => { message.textContent = ""; }, { once: true });
   message.textContent = "正在载入游戏…";
   stage.append(frame);

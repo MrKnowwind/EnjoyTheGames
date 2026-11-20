@@ -1,0 +1,1 @@
+export{M as postprocessVertexShaderWGSL}from"./engine-BCBGsvDm.js";

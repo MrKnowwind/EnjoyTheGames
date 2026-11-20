@@ -1,0 +1,1 @@
+export{U as colorPixelShaderWGSL}from"./engine-BCBGsvDm.js";

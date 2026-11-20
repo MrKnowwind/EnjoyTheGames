@@ -1,0 +1,1 @@
+export{ut as _KTXTextureLoader}from"./engine-BCBGsvDm.js";

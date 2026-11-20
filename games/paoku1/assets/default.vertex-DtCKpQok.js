@@ -1,0 +1,1 @@
+export{B as defaultVertexShaderWGSL}from"./engine-BCBGsvDm.js";

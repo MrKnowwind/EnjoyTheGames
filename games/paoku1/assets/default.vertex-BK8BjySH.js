@@ -1,0 +1,1 @@
+export{rt as defaultVertexShader}from"./engine-BCBGsvDm.js";

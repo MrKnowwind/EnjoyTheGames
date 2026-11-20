@@ -1,0 +1,1 @@
+export{H as colorVertexShaderWGSL}from"./engine-BCBGsvDm.js";
