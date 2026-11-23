@@ -1,6 +1,13 @@
 // 游戏库按此列表排序，首项显示在大厅的精选区。
 const games = [
   {
+    id: "bunny-cluelora",
+    title: "草地寻兔",
+    category: "益智",
+    description: "根据颜色、四叶草和数字线索，找出藏在草地里的兔子。",
+    orientation: "portrait",
+  },
+  {
     id: "sunny-glossvexa",
     title: "阳光清洗",
     category: "休闲",

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#254c36">
+  <title>草地寻兔</title>
+  <link rel="stylesheet" href="./game.css">
+</head>
+<body>
+<main id="game">
+  <section id="home" class="home">
+    <img class="scenery" src="./assets/art/meadow-480.webp" srcset="./assets/art/meadow-480.webp 480w, ./assets/art/meadow-880.webp 880w" sizes="(min-width: 540px) 540px, 100vw" alt="" fetchpriority="low">
+    <header class="home-tools">
+      <button id="sound" type="button">音效</button>
+      <button id="help" type="button">玩法说明</button>
+    </header>
+    <h1><img class="title" src="./assets/art/title-zh-CN.webp" width="840" height="342" alt="草地寻兔" fetchpriority="high"></h1>
+    <div class="home-bottom">
+      <p id="loading" role="status">正在准备游戏…</p>
+      <div class="home-actions">
+        <button id="play" class="primary" type="button" disabled>开始寻兔</button>
+        <button id="collection" type="button" disabled>收藏</button>
+      </div>
+      <p class="home-profile" id="home-profile" hidden></p>
+    </div>
+  </section>
+  <section id="field" class="field" hidden>
+    <header class="field-head">
+      <div><h2 id="level" tabindex="-1">草地 1</h2><span id="hearts" class="hearts"></span></div>
+      <span id="wallet" class="pill"></span>
+      <button id="pause" type="button">暂停</button>
+    </header>
+    <div id="rules" class="rules" aria-label="本关规则"></div>
+    <p id="lesson" class="lesson" hidden></p>
+    <div class="board-space">
+      <div class="board" id="board" aria-label="寻兔棋盘"></div>
+    </div>
+    <div class="actions" id="tile-actions" hidden>
+      <button id="mark" type="button">标为空格</button>
+      <button id="search" class="primary" type="button">搜寻</button>
+    </div>
+    <footer class="field-footer">
+      <p id="status" role="status">选择一个格子</p>
+      <strong id="found" aria-label="找到的兔子"></strong>
+      <button id="undo" type="button">撤销</button>
+      <button id="hint" type="button">提示</button>
+    </footer>
+  </section>
+</main>
+<dialog id="panel" aria-labelledby="panel-title">
+  <div class="panel-head"><h2 id="panel-title"></h2><button id="close" type="button" aria-label="关闭">×</button></div>
+  <div id="panel-body"></div>
+  <div class="dialog-actions" id="dialog-actions"></div>
+</dialog>
+<script type="module">
+  import("./game.js").catch(() => {
+    const status = document.getElementById("loading");
+    status.textContent = "游戏程序加载失败，请重试。";
+    const button = document.getElementById("play");
+    button.textContent = "重试";
+    button.disabled = false;
+    button.onclick = () => location.reload();
+  });
+</script>
+</body>
+</html>
