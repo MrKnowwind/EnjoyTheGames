@@ -6,7 +6,16 @@
   <meta name="theme-color" content="#71cbea">
   <title>阳光清洗</title>
   <link rel="stylesheet" href="./game.css">
-  <script type="module" src="./game.js"></script>
+  <link rel="modulepreload" href="./game.js?v=2">
+  <script type="module">
+    import("./game.js?v=2").catch(error => {
+      document.getElementById("loading-status").textContent = "游戏程序暂时无法加载，请重试。";
+      const retry = document.getElementById("retry");
+      retry.hidden = false;
+      retry.addEventListener("click", () => location.reload(), { once:true });
+      console.error(error);
+    });
+  </script>
 </head>
 <body>
   <main id="workshop" data-screen="loading">
