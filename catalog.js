@@ -1,6 +1,13 @@
 // 游戏库按此列表排序，首项显示在大厅的精选区。
 const games = [
   {
+    id: "sunny-glossvexa",
+    title: "阳光清洗",
+    category: "休闲",
+    description: "用水枪冲掉旋转玩具上的污渍，积攒能量开启超级水枪。",
+    orientation: "portrait",
+  },
+  {
     id: "hyper-tiltvexa",
     title: "云端弹珠",
     category: "街机",
@@ -27,13 +34,6 @@ const games = [
     category: "动作",
     description: "在森林中跳跃、滑铲，收集沿途的金币。",
     orientation: "landscape",
-  },
-  {
-    id: "sunny-glossvexa",
-    title: "阳光清洗",
-    category: "休闲",
-    description: "用水枪冲掉旋转玩具上的污渍，积攒能量开启超级水枪。",
-    orientation: "portrait",
   },
   {
     id: "star-dash",
