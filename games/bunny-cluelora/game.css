@@ -135,8 +135,8 @@ dialog::backdrop { background:#1b3728bd; }
 .collection-grid img { width:100%; height:100%; object-fit:contain; }
 .collection-grid .option-price { display:inline-flex; align-items:center; gap:.13rem; font-size:.8rem; }
 .collection-grid .option-price .glyph { width:1rem; height:1rem; }
-.medallion { display:grid; place-items:center; width:76px; height:76px; background:var(--mint); border:1px solid var(--line); border-radius:24px; animation:pop .42s ease-out both; color:var(--berry); }
-.medallion img,.medallion .glyph { width:70%; height:70%; }
+.medallion { display:grid; place-items:center; width:76px; height:76px; background:var(--mint); border:1px solid var(--line); border-radius:24px; color:var(--berry); }
+.medallion img,.medallion .glyph { width:70%; height:70%; animation:pop .42s ease-out both; }
 .drag-token,.demo { position:fixed; z-index:5; pointer-events:none; }
 .drag-token { translate:-50% -120%; background:var(--gold); border:1px solid #577353; border-radius:.6rem; padding:.42rem; box-shadow:0 3px 10px #254c3659; }
 .demo { inset:0; }
@@ -170,12 +170,16 @@ dialog::backdrop { background:#1b3728bd; }
 .effect { position:fixed; z-index:6; pointer-events:none; }
 .effect i { position:absolute; left:-3px; top:-3px; width:6px; height:6px; border-radius:50%; animation:scatter ease-out both; }
 .effect .particle-star { width:9px; height:9px; border-radius:0; clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%); }
-.effect-win .particle-star { width:12px; height:12px; animation-name:win-scatter; }
+.effect.effect-win i {
+  left:calc(-.5 * var(--size)); top:calc(-.5 * var(--size));
+  width:var(--size); height:var(--size); animation-name:win-scatter;
+}
 @keyframes win-scatter {
   from { opacity:0; transform:scale(.55); }
-  38% { opacity:1; transform:translate(calc(.63 * var(--x)),calc(.63 * var(--y))) scale(1); }
-  65% { opacity:.85; }
-  to { opacity:0; transform:translate(var(--x),var(--y)) scale(.48) rotate(60deg); }
+  22% { opacity:1; }
+  46% { transform:translate(calc(.77 * var(--x)),calc(.77 * var(--y))) rotate(var(--turn)) scale(.94); }
+  67% { opacity:.8; }
+  to { opacity:0; transform:translate(var(--x),var(--fall-y)) rotate(var(--turn)) scale(.35); }
 }
 @keyframes scatter { from { opacity:1; transform:scale(.55); } 25% { opacity:1; } to { opacity:0; transform:translate(var(--x),var(--y)) scale(.4) rotate(60deg); } }
 
