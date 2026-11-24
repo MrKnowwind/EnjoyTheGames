@@ -12,7 +12,7 @@
   <section id="home" class="home">
     <img class="scenery" src="./assets/art/meadow-480.webp" srcset="./assets/art/meadow-480.webp 480w, ./assets/art/meadow-880.webp 880w" sizes="(min-width: 540px) 540px, 100vw" alt="" fetchpriority="low">
     <header class="home-tools">
-      <button id="sound" type="button">音效</button>
+      <button id="sound" class="sound-toggle" type="button">音效</button>
       <button id="help" type="button">玩法说明</button>
     </header>
     <h1><img class="title" src="./assets/art/title-zh-CN.webp" width="840" height="342" alt="草地寻兔" fetchpriority="high"></h1>
@@ -29,7 +29,7 @@
     <header class="field-head">
       <div><h2 id="level" tabindex="-1">草地 1</h2><span id="hearts" class="hearts"></span></div>
       <span id="wallet" class="pill"></span>
-      <button id="settings" type="button">设置</button>
+      <button id="field-sound" class="sound-toggle" type="button">音效</button>
       <button id="pause" type="button">暂停</button>
     </header>
     <div id="rules" class="rules" aria-label="本关规则"></div>
@@ -37,7 +37,7 @@
     <div class="board-space">
       <div class="board" id="board" aria-label="寻兔棋盘"></div>
     </div>
-    <div class="actions" id="tile-actions" hidden>
+    <div class="actions" id="tile-actions" role="group" aria-label="格子操作" hidden>
       <button id="mark" type="button">标为空格</button>
       <button id="search" class="primary" type="button">搜寻</button>
     </div>
