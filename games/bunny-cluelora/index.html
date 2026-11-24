@@ -29,10 +29,11 @@
     <header class="field-head">
       <div><h2 id="level" tabindex="-1">草地 1</h2><span id="hearts" class="hearts"></span></div>
       <span id="wallet" class="pill"></span>
+      <button id="settings" type="button">设置</button>
       <button id="pause" type="button">暂停</button>
     </header>
     <div id="rules" class="rules" aria-label="本关规则"></div>
-    <p id="lesson" class="lesson" hidden></p>
+    <div id="lesson" class="lesson" role="status" hidden><span class="lesson-step"></span><strong></strong><p></p></div>
     <div class="board-space">
       <div class="board" id="board" aria-label="寻兔棋盘"></div>
     </div>
@@ -47,6 +48,7 @@
       <button id="hint" type="button">提示</button>
     </footer>
   </section>
+  <div id="demo" class="demo" aria-hidden="true" hidden></div>
 </main>
 <dialog id="panel" aria-labelledby="panel-title">
   <div class="panel-head"><h2 id="panel-title"></h2><button id="close" type="button" aria-label="关闭">×</button></div>
