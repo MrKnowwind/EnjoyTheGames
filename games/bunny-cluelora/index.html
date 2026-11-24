@@ -15,7 +15,7 @@
       <button id="sound" class="sound-toggle" type="button">音效</button>
       <button id="help" type="button">玩法说明</button>
     </header>
-    <h1><img class="title" src="./assets/art/title-zh-CN.webp" width="840" height="342" alt="草地寻兔" fetchpriority="high"></h1>
+    <h1><img class="title" src="./assets/art/title-zh-CN-480.webp" srcset="./assets/art/title-zh-CN-480.webp 480w, ./assets/art/title-zh-CN.webp 840w" sizes="(min-width: 490px) 400px, 83vw" width="840" height="342" alt="草地寻兔" fetchpriority="high"></h1>
     <div class="home-bottom">
       <p id="loading" role="status">正在准备游戏…</p>
       <div class="home-actions">
@@ -26,8 +26,9 @@
     </div>
   </section>
   <section id="field" class="field" hidden>
+    <img id="field-scenery" class="field-scenery" alt="" decoding="async" hidden>
     <header class="field-head">
-      <div><h2 id="level" tabindex="-1">草地 1</h2><span id="hearts" class="hearts"></span></div>
+      <div><h2 id="level" tabindex="-1">草地 1</h2><span id="hearts" class="hearts" role="img"></span></div>
       <span id="wallet" class="pill"></span>
       <button id="field-sound" class="sound-toggle" type="button">音效</button>
       <button id="pause" type="button">暂停</button>
@@ -38,7 +39,7 @@
       <div class="board" id="board" aria-label="寻兔棋盘"></div>
     </div>
     <div class="actions" id="tile-actions" role="group" aria-label="格子操作" hidden>
-      <button id="mark" type="button">标为空格</button>
+      <button id="mark" type="button">排除</button>
       <button id="search" class="primary" type="button">搜寻</button>
     </div>
     <footer class="field-footer">
@@ -48,6 +49,7 @@
       <button id="hint" type="button">提示</button>
     </footer>
   </section>
+  <div id="tutorial-shade" aria-hidden="true" hidden><i></i><i></i><i></i><i></i></div>
   <div id="demo" class="demo" aria-hidden="true" hidden></div>
 </main>
 <dialog id="panel" aria-labelledby="panel-title">
