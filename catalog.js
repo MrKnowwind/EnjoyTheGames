@@ -8,6 +8,13 @@ const games = [
     orientation: "portrait",
   },
   {
+    id: "twisty-cordelora",
+    title: "绳结工坊",
+    category: "益智",
+    description: "把绳扣拖进空孔，一点一点解开交错的彩绳。",
+    orientation: "portrait",
+  },
+  {
     id: "sunny-glossvexa",
     title: "阳光清洗",
     category: "休闲",

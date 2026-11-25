@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#153e36">
+<title>绳结工坊</title>
+<link rel="icon" href="./assets/workshop_icon.webp" type="image/webp">
+<link rel="stylesheet" href="./game.css">
+</head>
+<body>
+<main id="game">
+  <section id="loading">
+    <img id="loading-logo" class="logo" src="./assets/workshop_logo_zh.webp" alt="绳结工坊">
+    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+    <p id="load-status" role="status">正在准备工坊…</p>
+    <button id="retry" class="retry" type="button" hidden>重试</button>
+  </section>
+  <section id="screen" hidden>
+    <header id="hud"></header>
+    <img id="home-logo" class="logo" src="./assets/workshop_logo_zh.webp" alt="绳结工坊">
+    <section id="goals" hidden aria-live="polite"></section>
+    <div id="board-bed"><div class="board-frame" id="main-board"></div></div>
+    <footer id="status"></footer>
+  </section>
+  <div id="flight" aria-hidden="true"></div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div id="panel"></div></dialog>
+</main>
+<script type="module" src="./game.js"></script>
+</body>
+</html>
