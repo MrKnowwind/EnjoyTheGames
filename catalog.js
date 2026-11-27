@@ -22,6 +22,13 @@ const games = [
     orientation: "portrait",
   },
   {
+    id: "wawawa",
+    title: "一直挖矿",
+    category: "休闲",
+    description: "长按挖掘，收集并出售矿物，升级工具探索更深的矿区。",
+    orientation: "landscape",
+  },
+  {
     id: "hyper-tiltvexa",
     title: "云端弹珠",
     category: "街机",
